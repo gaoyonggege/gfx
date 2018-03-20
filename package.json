@@ -1,0 +1,46 @@
+{
+  "name": "gfx",
+  "version": "0.0.1",
+  "description": "前端持续集成平台",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:watch": "nodemon",
+    "prestart:prod": "tsc",
+    "start:prod": "node dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gaoyonggege@github.com/gaoyonggege/gfx.git"
+  },
+  "keywords": [
+    "前端持续集成",
+    "通用平台",
+    "前后端分离",
+    "fe构建"
+  ],
+  "author": "gaoyonggege@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gaoyonggege/gfx/issues"
+  },
+  "homepage": "https://github.com/gaoyonggege/gfx#readme",
+  "dependencies": {
+    "@nestjs/common": "^4.5.9",
+    "@nestjs/core": "^4.5.10",
+    "@nestjs/microservices": "^4.5.8",
+    "@nestjs/testing": "^4.5.5",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^5.5.6",
+    "typescript": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.11.1",
+    "@types/node": "^9.3.0",
+    "nodemon": "^1.14.1",
+    "ts-node": "^4.1.0",
+    "tslint": "5.3.2"
+  }
+}
