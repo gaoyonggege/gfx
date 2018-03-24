@@ -1,5 +1,7 @@
+import * as path from 'path';
+
 import { 
-	Get, Controller, Req, 
+	Get, Controller, Req, Res,
 	Query, Post, Response,
 	Body 
 } from '@nestjs/common';
@@ -7,16 +9,14 @@ import {
 @Controller('')
 export class AppController {
 	@Get()
-	root(): Object {
-	    //return 'Hello World!';
-	    return {
-	    	name: 'gfx',
-	    	address: '人们的心里'
-	    };
+	root( @Res() response ) {
+		response.sendFile( path.join(__dirname, '../template/index.html'), (err) => {
+			console.log('Sent ok');
+		} );
 	}
 
 	@Get('findAll')
-	async findAll( @Req() request, @Query('page') page ) {
+	async findAll( @Req() request, @Query('page') page, @Res() response ) {
 		let index: number = 1;
 		index += 1;
 
@@ -27,6 +27,8 @@ export class AppController {
 				resolve( 'promise finished' );
 			}, 2000);
 		} );
+
+		response.send
 
 	    return `ret : ${ret}`;
 	}

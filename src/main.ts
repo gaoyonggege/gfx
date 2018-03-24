@@ -3,11 +3,17 @@ import * as bodyParser from 'body-parser';
 import { NestFactory } from '@nestjs/core';
 import { ApplicationModule } from './app.module';
 
-const instance = express();
-instance.use(bodyParser.json());
+const server = express();
+/**
+*  静态服务器
+*	以 /static 开头
+*/
+server.use('/static', express.static('public'));
+
+server.use(bodyParser.json());
 
 async function bootstrap() {
-	const app = await NestFactory.create(ApplicationModule,<any>instance);
+	const app = await NestFactory.create(ApplicationModule,<any>server);
 	await app.listen(3000);
 }
 bootstrap();
