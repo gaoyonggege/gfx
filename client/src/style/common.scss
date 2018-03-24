@@ -1,0 +1,68 @@
+// thanks to sass!
+
+/****  变量定义   ***/
+
+/** 
+*   全局 
+*/
+// 主背景色
+$global-background-color: #EFF2F7;
+$recovery-color: #9F998A;
+
+/**
+*  头部悬浮条 
+*/
+$topbar-height: 60px;
+$topbar-margin-right: 50px;
+$topbar-background-color: $recovery-color;
+// 左侧小条背景色
+$topbar-left-background-color: #897E63;
+
+/**
+*  菜单竖栏
+*/
+$sidebar-width: 200px;
+$sidebar-background-color: #545c64;
+$sidebar-color: #F2EEEC;
+
+.sidebar {
+    width: $sidebar-width;
+    background-color: $sidebar-background-color;
+    color: $sidebar-color;
+
+    li {
+        text-align: center;
+        color: $sidebar-color !important;
+    }
+    li:hover {
+        background-color: $topbar-background-color;
+    }
+}
+
+/**
+*  页底footer
+*/
+$footer-height: 40px;
+$footer-background-color: $recovery-color;
+$footer-pading-left: 30px;
+$footer-font-size: 16px;
+$footer-color: #292A27;
+
+
+/**
+*  登陆页
+*/
+$login-gradient1: #747363;
+$login-gradient2: #5C6A06;
+
+
+
+
+
+
+
+
+
+
+/*****  基础样式  ******/
+
