@@ -58,3 +58,8 @@ package-lock.json
 # dotenv environment variables file
 .env
 
+# work
+public
+template
+runtime
+database
