@@ -8,7 +8,7 @@ const Page404 = r => require(['@/views/core/404.vue'], r);
 const Outlet = r => require(['@/views/shared/outlet.vue'], r);
 
 const Welcome = r => require(['@/views/core/welcome.vue'], r);
-
+const Gfx = r => require(['@/views/core/gfx.vue'], r);
 // 
 
 
@@ -28,12 +28,24 @@ const routes = [
                 path: '',
                 component: Index,
                 children: [
+                    // 欢迎页
                     {
                         path: '',
-                        component: Welcome,
-                        name: 'home'
+                        name: 'home',
+                        component: Welcome
                     },
-                    
+                    // 404
+                    {
+                        path: '404',
+                        name: '404',
+                        component: Page404
+                    },
+                    // gfx页
+                    {
+                        path: 'gfx',
+                        name: 'gfx',
+                        component: Gfx
+                    },
                 ]      
             },
         ]
@@ -44,7 +56,7 @@ const routes = [
     },
     {
         path: '**',
-        component: Page404
+        redirect: '/f/404'
     }
 ];
 

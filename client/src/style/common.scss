@@ -37,6 +37,9 @@ $sidebar-color: #F2EEEC;
     li:hover {
         background-color: $topbar-background-color;
     }
+    li.is-active {
+        background-color: $topbar-background-color;
+    }
 }
 
 /**
@@ -65,4 +68,11 @@ $login-gradient2: #5C6A06;
 
 
 /*****  基础样式  ******/
+// 一个路由页
+.page {
+    padding-top: 15px;
+}
+
+
+
 

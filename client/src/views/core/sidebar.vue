@@ -20,15 +20,19 @@ export default {
 			return [
 				{
 					name: '目录管理',
-					route: ''
+					route: '/f/dir'
 				},
 				{
 					name: '项目管理',
-					route: ''
+					route: '/f/project'
 				},
 				{
 					name: '模版管理',
-					route: ''
+					route: '/f/template'
+				},
+				{
+					name: 'gfx文档',
+					route: '/f/gfx'
 				}
 			];
 		},
