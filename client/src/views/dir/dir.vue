@@ -26,8 +26,8 @@
                     <el-input v-model="newGroupForm.name" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="组描述" prop="desc" :label-width="formLabelWidth">
-                    <el-input type="textarea" v-model="newGroupForm.desc" :rows="6"
-                        maxLength="60" placeholder="最多60个字" auto-complete="off"></el-input>
+                    <el-input type="textarea" v-model="newGroupForm.desc" :rows="4"
+                        resize="none" maxLength="60" placeholder="最多60个字" auto-complete="off"></el-input>
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
