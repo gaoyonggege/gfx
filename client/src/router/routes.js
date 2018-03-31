@@ -9,7 +9,9 @@ const Outlet = r => require(['@/views/shared/outlet.vue'], r);
 
 const Welcome = r => require(['@/views/core/welcome.vue'], r);
 const Gfx = r => require(['@/views/core/gfx.vue'], r);
-// 
+
+// 模版管理 
+const Dir = r => require(['@/views/dir/dir.vue'], r);
 
 
 
@@ -46,6 +48,12 @@ const routes = [
                         name: 'gfx',
                         component: Gfx
                     },
+                    // 模版管理
+                    {
+                        path: 'dir',
+                        name: 'dir',
+                        component: Dir
+                    }
                 ]      
             },
         ]

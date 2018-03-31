@@ -5,14 +5,25 @@
 <template>
     <section class="page gfx">
         <p class="title">GFX系统文档</p>
-        <ul class="card">
-            <li>
-                <p>部署机器IP: <span>{{ serverIp }}</span></p>
-            </li>
-            <li>
-                <p>测试环境静态资源的的域名路径前缀: <span>{{ serverPrefixPath }}</span></p>
-            </li>
-        </ul>
+        <div class="section">
+            <p class="sub-title">基本信息</p>
+            <ul class="card">
+                <li>
+                    <p>部署机器IP: <span>{{ base.serverIp }}</span></p>
+                </li>
+                <li>
+                    <p>测试环境静态资源的的域名路径前缀: <span>{{ serverPrefixPath }}</span></p>
+                </li>
+            </ul>
+        </div>
+        <div class="section"> 
+            <p class="sub-title">用户列表</p>  
+            <ul class="card">
+                <li v-for="(user,index) of users" :key="index">
+                    <p>{{ index+1 }}: &nbsp;&nbsp;<span>{{ user.email }}</span></p>
+                </li>
+            </ul>
+        </div>    
     </section>
 </template>
 
@@ -21,12 +32,28 @@
 export default {
     data () {
         return {
-            // 部署的机器ip
-            serverIp: '..',
-            // 测试环境的域名路径前缀
-            serverPrefixPath: '..',
-            
+            base: {
+                // 部署的机器ip
+                serverIp: '..',
+                // 测试环境的域名路径前缀
+                serverPrefixPath: '..',
+            },
+            users: [
+                { type: 1, email: 'aaaa@aa.com' },
+                { type: 1, email: 'bbbbb@bb.com' },
+                { type: 1, email: 'cccccc@cc.com' },
+            ]
         };
+    },
+    methods: {
+        init () {
+
+        },
+        
+    },
+    mounted () {
+        // 请求各列表
+        this.init();
     }
 }    
 </script>
@@ -42,18 +69,26 @@ export default {
             font-size: 24px;
         }
 
-        .card {
-            margin: 30px 0;
-            padding: 15px;
-            background: rgba(3, 15, 9, .1);
+        .section {
+            .sub-title {
+                font-weight: bold;
+                font-size: 20px;
+            }
             
+            .card {
+                margin: 10px 0 40px 0;
+                padding: 15px;
+                background: rgba(3, 15, 9, .1);
+                
 
-            p {
-                line-height: 2;
-                font-size: 18px;
+                p {
+                    line-height: 2;
+                    font-size: 18px;
+                    font-weight: bold;
 
-                span {
-                    color: rgba(219, 26, 12, 0.5);
+                    span {
+                        color: rgba(4, 57, 34, 0.8);
+                    }
                 }
             }
         }

@@ -72,9 +72,45 @@ $login-gradient2: #5C6A06;
 /*****  基础样式  ******/
 // 一个路由页
 .page {
-    padding-top: 15px;
+    padding: 15px 30px 0 30px;
+    
+    .head {
+        padding: 0 20px 10px 20px;
+        border-bottom: 1px solid rgba(113, 91, 91, .5);
+    }
+
 }
 
+// 组管理
+.groups {
+    overflow: hidden;
 
+    .line {
+        margin: 15px 0 !important;
+    }
 
+    .card {
+        overflow: hidden;
+        height: 150px;
+        background: rgba(21, 94, 102, .3);
+
+        &:hover {
+            background: rgba(168, 147, 28, 0.3);
+        }
+
+        .name {
+            padding: 10px 0;
+            text-align: center;
+            line-height: 30px;
+            font-size: 20px;
+        }
+
+        .desc {
+            display: block;
+            padding: 0 10px;
+            line-height: 22px;
+            font-size: 16px;    
+        }
+    }
+}
 

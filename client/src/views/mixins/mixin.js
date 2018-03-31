@@ -1,22 +1,21 @@
 /**
 *  Vue mixin
 */
+import config from '../../config/config';
 
 export default {
     computed: {
-        headerRowStyle () {
-            return {
-                backgroundColor: '#f5f7fa'
-            };
+        isRoot () {
+            return this.$store.state.user.type == config.user.TYPE_ROOT;
         },
-        role () {
-            return this.$store.state.user.uroles;
-        }
-    },
-    filters: {
-        emptyStr ( str ) {
-            return str ? str : '--';
-        }
+        isFE () {
+            return this.$store.state.user.type == config.user.TYPE_FE;
+        },
+        isServer () {
+            return this.$store.state.user.type == config.user.TYPE_Server;
+        },
+        
+
     },
     methods: {
         goToHome () {   // 去首页
