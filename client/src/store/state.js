@@ -22,7 +22,7 @@ export default {
 		},
 		{
 			name: '模版管理',
-			route: '/f/template'
+			route: '/f/template/list'
 		},
 		{
 			name: 'gfx文档',

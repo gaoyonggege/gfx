@@ -12,7 +12,7 @@
                     <p>部署机器IP: <span>{{ base.serverIp }}</span></p>
                 </li>
                 <li>
-                    <p>测试环境静态资源的的域名路径前缀: <span>{{ serverPrefixPath }}</span></p>
+                    <p>测试环境静态资源的的域名路径前缀: <span>{{ base.serverPrefixPath }}</span></p>
                 </li>
             </ul>
         </div>
