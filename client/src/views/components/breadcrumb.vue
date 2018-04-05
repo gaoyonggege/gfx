@@ -2,7 +2,7 @@
     <div class="breadcrumb-wrap">
         <el-button type="text" @click="goBack" icon="el-icon-arrow-left" class="goback">返回</el-button>
         <el-breadcrumb separator="/" class="breadcrumb">
-            <el-breadcrumb-item v-for="(route, index) in $route.matched" v-if="route.meta.hidden" 
+            <el-breadcrumb-item v-for="(route, index) in $route.matched" v-if="route.meta && route.meta.visible" 
                 :to="route.path" :key="index">{{ route.meta.name }}</el-breadcrumb-item>
         </el-breadcrumb>
     </div>

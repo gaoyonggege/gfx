@@ -11,10 +11,15 @@ const Welcome = r => require(['@/views/core/welcome.vue'], r);
 const Gfx = r => require(['@/views/core/gfx.vue'], r);
 
 // 目录管理 
-const Group = r => require(['@/views/group/group.vue'], r);
+const GroupList = r => require(['@/views/group/groupList.vue'], r);
+// 源码管理
+const SourceGroupList = r => require(['@/views/source/sourceGroupList.vue'], r);
+const SourceProjectList = r => require(['@/views/source/sourceProjectList.vue'], r);
+const SourceDetail = r => require(['@/views/source/sourceDetail.vue'], r);
 // 模版管理
 const TemplateGroupList = r => require(['@/views/template/templateGroupList.vue'], r);
 const TemplateProjectList = r => require(['@/views/template/templateProjectList.vue'], r);
+const TemplateTplList = r => require(['@/views/template/templateTplList.vue'], r);
 
 
 const routes = [
@@ -54,7 +59,59 @@ const routes = [
                     {
                         path: 'group',
                         name: 'group',
-                        component: Group
+                        component: GroupList
+                    },
+                    // 
+                    {
+                        path: 'source',
+                        component: Outlet,
+                        children: [
+                            {
+                                path: 'group-list',
+                                component: Outlet,
+                                meta: {
+                                    name: '源码组列表',
+                                    visible: true
+                                },
+                                children: [
+                                    {
+                                        path: '',
+                                        name: 'source-group-list',
+                                        component: SourceGroupList,
+                                    },
+                                    {
+                                        path: 'project-list',
+                                        component: Outlet,
+                                        meta: {
+                                            name: '源码项目列表',
+                                            visible: true
+                                        },
+                                        children: [
+                                            {
+                                                path: '',
+                                                name: 'source-project-list',
+                                                component: SourceProjectList,
+                                            },
+                                            {
+                                                path: 'source-detail',
+                                                component: Outlet,
+                                                meta: {
+                                                    name: '源码详情',
+                                                    visible: true
+                                                },
+                                                children: [
+                                                    {
+                                                        path: '',
+                                                        name: 'source-detail',
+                                                        component: SourceDetail,
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     // 模版管理
                     {
@@ -63,18 +120,49 @@ const routes = [
                         children: [
                             {
                                 path: 'group-list',
-                                name: 'template-group-list',
-                                component: TemplateGroupList
-                            },
-                            {
-                                path: 'project-list',
-                                name: 'template-project-list',
-                                component: TemplateProjectList,
+                                component: Outlet,
                                 meta: {
-                                    name: '模版项目列表',
-                                    hidden: true
+                                    name: '模版组列表',
+                                    visible: true
                                 },
-                            }
+                                children: [
+                                    {
+                                        path: '',
+                                        name: 'template-group-list',
+                                        component: TemplateGroupList,
+                                    },
+                                    {
+                                        path: 'project-list',
+                                        component: Outlet,
+                                        meta: {
+                                            name: '模版项目列表',
+                                            visible: true
+                                        },
+                                        children: [
+                                            {
+                                                path: '',
+                                                name: 'template-project-list',
+                                                component: TemplateProjectList,
+                                            },
+                                            {
+                                                path: 'tpl-list',
+                                                component: Outlet,
+                                                meta: {
+                                                    name: '模版tpl列表',
+                                                    visible: true
+                                                },
+                                                children: [
+                                                    {
+                                                        path: '',
+                                                        name: 'template-tpl-list',
+                                                        component: TemplateTplList,
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
                         ]
                     }
                 ]      

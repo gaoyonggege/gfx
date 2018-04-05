@@ -5,6 +5,7 @@ import config from '../../config/config';
 
 export default {
     computed: {
+        // 判断用户权限
         isRoot () {
             return this.$store.state.user.type == config.user.TYPE_ROOT;
         },
@@ -14,8 +15,10 @@ export default {
         isServer () {
             return this.$store.state.user.type == config.user.TYPE_Server;
         },
-        
-
+        // 分页
+        pagSizes () {
+            return [ 10, 20, 30 ];
+        }
     },
     methods: {
         goToHome () {   // 去首页

@@ -4,17 +4,7 @@
         <div class="head" v-if="isRoot">
             <el-button type="primary" @click="newGroupClick">新建</el-button>            
         </div>
-        <div class="groups">
-            <el-row :gutter="20">
-                <el-col class="line" :span="12" v-for="(group,index) of groupListData" :key="index">
-                    <div class="card">
-                        <h3 class="name">{{ group.name }}</h3>
-                        <a class="desc" :title="group.desc">{{ group.desc }}</a>
-                        <i class="delete el-icon-delete" @click="deleteGroupClick(group)"></i>
-                    </div>
-                </el-col>
-            </el-row>
-        </div>
+        <Groups ref="groups" :deletable="true" @delete="deleteGroupClick"></Groups>
 
         <el-dialog
             title="新建目录"
@@ -40,6 +30,7 @@
 </template>
 
 <script>
+import Groups from '../components/groups.vue';
 import { validateGroupName } from '../../utils/validate';
 import mixin from '../mixins/mixin';
 
@@ -81,9 +72,6 @@ export default {
     },
     mixins: [ mixin ],
     methods: {
-        requestGroups () {
-                        
-        },
         // new group
         newGroupClick () {
             this.dialogVisible = true;    
@@ -128,9 +116,12 @@ export default {
             
         }
     },
+    components: {
+        Groups    
+    },
     mounted () {
         // 请求列表
-        this.requestGroups();
+        this.$refs['groups'].init();
     },
 }
 </script>

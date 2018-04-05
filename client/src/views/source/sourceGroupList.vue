@@ -1,14 +1,14 @@
 <!-- 模版管理主页面 -->
 <template>
     <section class="page group">
-        <p class="page-title">模版/组列表</p>
+        <p class="page-title">源码/组列表</p>
         <Groups ref="groups" @click="groupClick"></Groups>
     </section>
 </template>
 
 <script>
 import Groups from '../components/groups.vue';
-import { createTplProjectListRoute } from '../../utils/route';
+import { createSourceProjectListRoute } from '../../utils/route';
 import mixin from '../mixins/mixin';
 
 export default {
@@ -23,8 +23,8 @@ export default {
             if ( !group ) {
                 return false;
             }
-
-            const route = createTplProjectListRoute(group);
+            let groupName = group.name;
+            const route = createSourceProjectListRoute(groupName);
             this.$router.push(route);
         }     
     },

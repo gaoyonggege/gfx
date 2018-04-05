@@ -2,7 +2,7 @@
 <template>
     <section class="page template-group">
         <Breadcrumb></Breadcrumb>
-        <Projects ref="projects" btn-txt="模版库" @route="goToTplList"></Projects>
+        <Projects ref="projects" btn-txt="源码详情" @route="goToTplList"></Projects>
     </section>
 </template>
 
@@ -10,7 +10,7 @@
 import Breadcrumb from '../components/breadcrumb.vue';
 import Projects from '../components/projects.vue';
 import mixin from '../mixins/mixin';
-import { createTplsListRoute } from '../../utils/route';
+import { createSourceDetailRoute } from '../../utils/route';
 
 export default {
     data () {
@@ -42,7 +42,7 @@ export default {
                 return false;
             }
             
-            let route = createTplsListRoute( group, project );
+            let route = createSourceDetailRoute( group, project );
             this.$router.push(route);
         }
     },

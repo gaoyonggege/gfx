@@ -17,8 +17,8 @@ export default {
 			route: '/f/group'
 		},
 		{
-			name: '项目管理',
-			route: '/f/project'
+			name: '源码管理',
+			route: '/f/source/group-list'
 		},
 		{
 			name: '模版管理',
