@@ -46,7 +46,7 @@ export default {
 		flex: 1;
 		height: 100%;
 		overflow: hidden;
-		background-color: $global-background-color;
+		background-color: $mainview-background-color;
 
 		.wrap {
 			position: relative;

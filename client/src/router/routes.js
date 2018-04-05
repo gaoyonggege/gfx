@@ -11,10 +11,10 @@ const Welcome = r => require(['@/views/core/welcome.vue'], r);
 const Gfx = r => require(['@/views/core/gfx.vue'], r);
 
 // 目录管理 
-const Dir = r => require(['@/views/dir/dir.vue'], r);
+const Group = r => require(['@/views/group/group.vue'], r);
 // 模版管理
-const TemplateList = r => require(['@/views/template/templateList.vue'], r);
-
+const TemplateGroupList = r => require(['@/views/template/templateGroupList.vue'], r);
+const TemplateProjectList = r => require(['@/views/template/templateProjectList.vue'], r);
 
 
 const routes = [
@@ -52,9 +52,9 @@ const routes = [
                     },
                     // 目录管理
                     {
-                        path: 'dir',
-                        name: 'dir',
-                        component: Dir
+                        path: 'group',
+                        name: 'group',
+                        component: Group
                     },
                     // 模版管理
                     {
@@ -62,9 +62,18 @@ const routes = [
                         component: Outlet,
                         children: [
                             {
-                                path: 'list',
-                                name: 'template-list',
-                                component: TemplateList
+                                path: 'group-list',
+                                name: 'template-group-list',
+                                component: TemplateGroupList
+                            },
+                            {
+                                path: 'project-list',
+                                name: 'template-project-list',
+                                component: TemplateProjectList,
+                                meta: {
+                                    name: '模版项目列表',
+                                    hidden: true
+                                },
                             }
                         ]
                     }

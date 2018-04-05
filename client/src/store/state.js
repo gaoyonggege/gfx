@@ -13,8 +13,8 @@
 export default {
 	menus: [
 		{
-			name: '目录管理',
-			route: '/f/dir'
+			name: '组管理',
+			route: '/f/group'
 		},
 		{
 			name: '项目管理',
@@ -22,7 +22,7 @@ export default {
 		},
 		{
 			name: '模版管理',
-			route: '/f/template/list'
+			route: '/f/template/group-list'
 		},
 		{
 			name: 'gfx文档',

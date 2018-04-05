@@ -1,15 +1,16 @@
 <!-- 目录管理主页面 -->
 <template>
-    <section class="page dir">
+    <section class="page page-group">
         <div class="head" v-if="isRoot">
             <el-button type="primary" @click="newGroupClick">新建</el-button>            
         </div>
         <div class="groups">
             <el-row :gutter="20">
-                <el-col class="line" :span="12" v-for="(dir,index) of dirListData" :key="index">
+                <el-col class="line" :span="12" v-for="(group,index) of groupListData" :key="index">
                     <div class="card">
-                        <h3 class="name">{{ dir.name }}</h3>
-                        <a class="desc" :title="dir.desc">{{ dir.desc }}</a>
+                        <h3 class="name">{{ group.name }}</h3>
+                        <a class="desc" :title="group.desc">{{ group.desc }}</a>
+                        <i class="delete el-icon-delete" @click="deleteGroupClick(group)"></i>
                     </div>
                 </el-col>
             </el-row>
@@ -39,17 +40,27 @@
 </template>
 
 <script>
+import { validateGroupName } from '../../utils/validate';
 import mixin from '../mixins/mixin';
 
 export default {
     data () {
+
+        const validateFormGroupName = ( rule, value, callback ) => {
+            if ( !validateGroupName(value) ) {
+                return callback( new Error('组名只能包含大小写字母数字下划线中划线，长度不能超过20位!') );
+            }
+
+            callback();
+        };
+
         return {
-            dirListData: [
-                { name: '活动类', desc: '主要用于放置fe对接各类推广活动的项目' },
-                { name: '活动类', desc: '主要用于放置fe对接各类推广活动的项目' },
-                { name: '活动类', desc: '主要用于放置fe对接各类推广活动的项目' },
-                { name: '活动类', desc: '主要用于放置fe对接各类推广活动的项目' },
-                { name: '活动类', desc: '主要用于放置fe对接各类推广活动的项目' },
+            groupListData: [
+                { name: 'activitiy1', desc: '主要用于放置fe对接各类推广活动的项目' },
+                { name: 'activitiy2', desc: '主要用于放置fe对接各类推广活动的项目' },
+                { name: 'activitiy3', desc: '主要用于放置fe对接各类推广活动的项目' },
+                { name: 'activitiy4', desc: '主要用于放置fe对接各类推广活动的项目' },
+                { name: 'activitiy5', desc: '主要用于放置fe对接各类推广活动的项目' },
             ],
             dialogVisible: false,
             formLabelWidth: '80px',
@@ -59,7 +70,8 @@ export default {
             },
             newGroupRules: {
                 name: [
-                    { required: true, message: '请输入组名称', trigger: 'blur' }
+                    { required: true, message: '请输入组名称', trigger: 'blur' },
+                    { validator: validateFormGroupName, trigger: 'blur' }
                 ],
                 desc: [
                     { required: true, message: '请输入组描述', trigger: 'blur' }
@@ -83,6 +95,7 @@ export default {
             };
             this.$refs['newGroupForm'].resetFields(); 
         },
+        // add group
         submit ( formName ) {
             this.$refs[formName].validate( ( valid ) => {
                 if ( valid ) {
@@ -95,7 +108,25 @@ export default {
         addGroup () {
             //
                     
-        }                   
+        },
+        // delete group
+        deleteGroupClick ( group ) {
+            if ( !group ) {
+                return false;
+            }
+            const groupName = group.name;
+            this.$confirm(`此操作将永久删除组 ${groupName}, 是否继续?`, '警告', {
+                    type: 'warning'    
+                }).then( (  ) => {
+                    this.deleteGroup( group );
+                } ).catch( () => {
+                } );
+        },
+        deleteGroup ( group ) {
+            const groupName = group.name;
+            
+            
+        }
     },
     mounted () {
         // 请求列表
@@ -105,9 +136,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .dir {
-        .head {
-            
-        }    
+    .page-group {
+           
     }       
 </style>

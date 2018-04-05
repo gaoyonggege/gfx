@@ -3,7 +3,7 @@
 */
 import axios from 'axios'
 import { Message } from 'element-ui'
-import loading from '../components/loading'
+import loading from '../views/components/loading'
 import types from '../store/types';
 
 
